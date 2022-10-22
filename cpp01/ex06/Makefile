@@ -1,11 +1,10 @@
 # executable
-NAME := phonebook
+NAME := 06
 
 # sources
 SRC :=	main.cpp		\
-		PhoneBook.cpp	\
-		Contact.cpp		\
-				
+		Harl.cpp		\
+		
 # tmp files
 OBJ := $(SRC:%.cpp=%.o)
 DPS := $(SRC:%.cpp=%.d)

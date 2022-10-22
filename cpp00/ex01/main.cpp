@@ -28,11 +28,11 @@ void Search(PhoneBook *pb)
     }
 
     std::cout << "Enter contact id\n";
-    char c_id;
+    char c_id[3];
     while ((std::cin >> c_id))
     {
         std::cin.clear();
-        id = c_id - '0';
+        id = atoi(c_id);
         if(id < 1 || id > 8)
             std::cout << "id is a number from 1 to 8\n";
         else if (pb->get_list()[id-1].get_first_name() == "")

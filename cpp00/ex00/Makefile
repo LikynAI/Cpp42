@@ -1,31 +1,36 @@
+# executable
+NAME := megaphone
 
-NAME = megaphone
+# sources
+SRC :=	megaphone.cpp	\
 
-SRCS_DIR = ./
-SRCS = megaphone.cpp
+# tmp files
+OBJ := $(SRC:%.cpp=%.o)
+DPS := $(SRC:%.cpp=%.d)
 
-FLAGS = -Wall -Wextra -Werror
+# flags
+CPPFLAGS := -std=c++98 -Wall -Wextra -Werror
+CXXFLAGS := -MMD -MP
 
-OBJS_DIR 	= 	objects/
-OBJ 		= 	$(SRCS:.cpp=.o)
-OBJS 		= 	$(addprefix $(OBJS_DIR), $(OBJ))
-
-$(OBJS_DIR)%.o :	$(SRCS_DIR)%.cpp
-	@mkdir -p $(OBJS_DIR)
-	@echo "Compiling: $<"
-	@clang++ $(FLAGS) -c $< -o $@
-
-$(NAME): $(OBJS)
-	@clang++ $(FLAGS) -o $(NAME) $(OBJS)
-
+# rules
 all: $(NAME)
 
+$(NAME): $(OBJ)
+	$(CXX) $(OBJ) -o $@
+
+%.o: %.cpp Makefile
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) -c $< -o $@
+
+-include $(DPS)
+
 clean:
-	@echo "Cleaning: $(OBJS_DIR)"
-	@rm -rf $(OBJS_DIR)
+	@printf ">Makefile> clean tmp files\n"
+	$(RM) $(OBJ) $(DPS)
 
 fclean: clean
-	@echo "Cleaning: $(NAME)"
-	@rm -f $(NAME)
+	@printf ">Makefile> clean executable\n"
+	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all re clean compile_libs create_dirs clean_libs log_compile_start

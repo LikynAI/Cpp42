@@ -4,7 +4,6 @@ NAME := 01
 # sources
 SRC :=	main.cpp		\
 		Zombie.cpp		\
-		Zombie.hpp		\
 		zombieHorde.cpp \
 # tmp files
 OBJ := $(SRC:%.cpp=%.o)

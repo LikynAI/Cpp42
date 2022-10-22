@@ -4,10 +4,9 @@ NAME := 00
 # sources
 SRC :=	main.cpp		\
 		Zombie.cpp		\
-		Zombie.hpp		\
 		newZombie.cpp	\
-		randomchump.cpp \
-		
+		randomChump.cpp	\
+
 # tmp files
 OBJ := $(SRC:%.cpp=%.o)
 DPS := $(SRC:%.cpp=%.d)

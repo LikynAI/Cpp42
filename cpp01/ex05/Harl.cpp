@@ -8,6 +8,11 @@ Harl::~Harl()
 {
 }
 
+void	Harl::insignificant(void)
+{
+	std::cout << "Complains about something insignificant\n";
+}
+
 void	Harl::debug(void)
 {
 	std::cout << "[DEBUG]\nI love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger.\nI really do!\n";
@@ -30,10 +35,11 @@ void	Harl::error(void)
 
 void	Harl::complain(std::string level)
 {
-	void    (Harl::*f[])( void ) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	void    (Harl::*f[])( void ) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error, &Harl::insignificant};
 	std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int i = 0;
 
-	for (int i = 0; i < 4; i++)
-		if (levels[i] == level)
-			(this->*f[i])();
+	while (i < 4 && levels[i] != level)
+		i++;
+	(this->*f[i])();
 }
