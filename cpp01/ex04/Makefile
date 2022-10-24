@@ -1,5 +1,5 @@
 # executable
-NAME := 01
+NAME := 04
 
 # sources
 SRC :=	main.cpp
