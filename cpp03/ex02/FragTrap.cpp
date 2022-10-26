@@ -36,7 +36,7 @@ FragTrap &FragTrap::operator=(const FragTrap &src)
     energy = src.energy;
     damage = src.damage;
     health = src.health;
-    type = src.type;
+    type  = "FragTrap";
     return *this;
 }
 

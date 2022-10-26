@@ -3,10 +3,10 @@
 
 int main()
 {
-    ScavTrap amogus("SUS");
-    ScavTrap amogis("SiS");
+    ScavTrap amogis("SUS");
+    ClapTrap amogus(amogis);
+
     
-    amogus = amogis;
     amogus.attack("boba");
     amogus.attack("biba");
     amogus.takeDamage(2);

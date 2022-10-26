@@ -31,57 +31,61 @@ Fixed &Fixed::operator=(const Fixed &src)
     return *this;
 }
 
-bool	Fixed::operator>(Fixed fixed)
+bool	Fixed::operator>(Fixed fixed)const 
 {
 	return (this->value > fixed.value);
 }
 
-bool	Fixed::operator<(Fixed fixed)
+bool	Fixed::operator<(Fixed fixed)const 
 {
 	return (this->value < fixed.value);
 }
 
-bool	Fixed::operator>=(Fixed fixed)
+bool	Fixed::operator>=(Fixed fixed)const 
 {
 	return (this->value >= fixed.value);
 }
 
-bool	Fixed::operator<=(Fixed fixed)
+bool	Fixed::operator<=(Fixed fixed)const 
 {
 	return (this->value <= fixed.value);
 }
 
-bool	Fixed::operator==(Fixed fixed)
+bool	Fixed::operator==(Fixed fixed)const 
 {
 	return (this->value == fixed.value);
 }
 
-bool	Fixed::operator!=(Fixed fixed)
+bool	Fixed::operator!=(Fixed fixed)const 
 {
 	return (this->value != fixed.value);
 }
 
-Fixed Fixed::operator+(Fixed &a)
+Fixed Fixed::operator+(const Fixed &a) const
 {
-	Fixed ans = Fixed(this->toFloat()+a.toFloat());
+	Fixed ans = Fixed();
+	ans.setRawBits(value + a.getRawBits());
 	return ans;
 }
 
-Fixed Fixed::operator-(Fixed &a)
+Fixed Fixed::operator-(const Fixed &a)const 
 {
-	Fixed ans = Fixed(this->toFloat()-a.toFloat());
+	Fixed ans = Fixed();
+	ans.setRawBits(value - a.getRawBits());
 	return ans;
 }
 
-Fixed Fixed::operator*(Fixed &a)
+Fixed Fixed::operator*(const Fixed &a)const 
 {
-	Fixed ans = Fixed(this->toFloat()*a.toFloat());
+	Fixed ans = Fixed();
+	ans.setRawBits((value * a.getRawBits()) >> f_bits);
 	return ans;
 }
 
-Fixed Fixed::operator/(Fixed &a)
+Fixed Fixed::operator/(const Fixed &a)const 
 {
-	Fixed ans = Fixed(this->toFloat()/a.toFloat());
+	Fixed ans = Fixed();
+	ans.setRawBits(((value<<f_bits) / (a.getRawBits())));
 	return ans;
 }
 
