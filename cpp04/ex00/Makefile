@@ -2,9 +2,10 @@
 NAME := exe
 
 # sources
-SRC :=	main.cpp		\
-		ClapTrap.cpp	\
-		FragTrap.cpp	\
+SRC :=	main.cpp	\
+		Animal.cpp	\
+		Cat.cpp		\
+		Dog.cpp		\
 		
 # tmp files
 OBJ := $(SRC:%.cpp=%.o)
