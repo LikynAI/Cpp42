@@ -40,17 +40,6 @@ FragTrap &FragTrap::operator=(const FragTrap &src)
     return *this;
 }
 
-void FragTrap::attack(const std::string& target)
-{
-    if (energy > 0 && health > 0)
-    {
-        energy--;
-        std::cout << type << " " << name << " attacks WITH FURIUS ANGER " << target << " causing " << damage << " points of damage!\n";
-    }
-    else
-        std::cout << type << " " << name << " is out of energy or health.\n";
-}
-
 void FragTrap::highFivesGuys()
 {
     std::cout << type << " " << name << " HIGH FIVE!!!\n";
