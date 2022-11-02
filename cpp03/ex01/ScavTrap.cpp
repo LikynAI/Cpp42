@@ -36,7 +36,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &src)
     energy = src.energy;
     damage = src.damage;
     health = src.health;
-    type = src.type;
+    type = "ScavTrap";
     return *this;
 }
 

@@ -36,7 +36,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &src)
     energy = src.energy;
     damage = src.damage;
     health = src.health;
-    type = src.type;
+    type = "ClapTrap";
     return *this;
 }
 
