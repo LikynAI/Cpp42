@@ -2,12 +2,7 @@
 NAME := exe
 
 # sources
-<<<<<<< HEAD
-SRC :=	Bureaucrat.cpp	\
-		main.cpp		\
-=======
 SRC :=	main.cpp		\
->>>>>>> 654d3fd6adae5d5d7a2af8631dcf1adc8c9d3806
 		
 # tmp files
 OBJ := $(SRC:%.cpp=%.o)

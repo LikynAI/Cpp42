@@ -34,4 +34,8 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	" ooo\n" <<
 	"  |\n" << 
 	'\n';
+<<<<<<< HEAD
+=======
+	std::cout << executor.getName() << " created a tree\n";
+>>>>>>> 654d3fd6adae5d5d7a2af8631dcf1adc8c9d3806
 }

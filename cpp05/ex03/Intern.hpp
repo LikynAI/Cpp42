@@ -20,6 +20,13 @@ public:
 	};
 
     Intern &operator=(Intern const &src);
+<<<<<<< HEAD
 
     Form *makeForm(std::string form_name, std::string target) const;
+=======
+    Form *makePresidentialPardonForm(std::string target);
+    Form *makeShrubberyCreationForm(std::string target);
+    Form *makeRobotomyRequestForm(std::string target);
+    Form *makeForm(std::string form_name, std::string target);
+>>>>>>> 654d3fd6adae5d5d7a2af8631dcf1adc8c9d3806
 };
