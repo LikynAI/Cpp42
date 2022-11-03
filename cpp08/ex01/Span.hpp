@@ -2,53 +2,91 @@
 #include <cctype>
 #include <exception>
 #include <algorithm>
+#include <vector>
+#include <iostream>
 
-template<typename T>
 class Span
 {
 private:
-    size_t n;
-    T *arr;
+    size_t count;
+    size_t size;
+    std::vector<int> arr;
     Span();
 public:
-    Span(size_t n)
+    Span(size_t size)
     {
-        this->n = n;
-        this->arr = new T[n];
+        this->size = size;
+        this->arr = std::vector<int>(size);
+        count = 0;
     }
     
-    Span(Span<T> &src)
+    Span(Span &src)
     {
         *this = src;
     }
   
     class OutOfBoundsException: public std::exception {
         const char* what() const throw() {
-	        return "OutOfBoundsException";
+	        return "Index Is Out Of Bounds";
+        }
+	};
+    class SpanCantBeFound: public std::exception {
+        const char* what() const throw() {
+	        return "Span Cant Be Found";
         }
 	};
 
     Span &operator=(Span &src)
     {
-        n = src.n;
+        size = src.size;
+        count = src.count;
+        arr = src.arr;
+        return *this;
     }
 
-	T &operator[](size_t index)
+	int &operator[](size_t index)
     {
-        if (index < 0 || index >= n)
+        if (index < 0 || index >= size)
            throw OutOfBoundsException();
         return this->arr[index];
     }
     
-	size_t size(void)
+    void addNumber(int a)
     {
-        return  n;
+        if (count == size)
+           throw OutOfBoundsException();
+        arr[count] = a;
+        count++;
     }
 
-    int LongestSpan
+    void addRange(int *begin, int *end)
+    {
+        if (count + ((end - begin)) > size)
+           throw OutOfBoundsException();
+        arr.insert(arr.begin()+count, begin, end);
+    }
+
+    size_t longestSpan()
+    {
+        if (count <= 1)
+            throw SpanCantBeFound();
+        std::vector<int> sorted = arr;
+        sort(sorted.begin(),sorted.begin() + count);
+        return sorted[count-1] - sorted[count]; 
+    }
+
+    size_t shortestSpan()
+    {
+        size_t m = SIZE_MAX;
+        std::vector<int> sorted = arr;
+        sort(sorted.begin(),sorted.begin() + count);
+         
+        for (size_t i = 0; i < count - 1; i++)
+            if (m > (size_t)(sorted[i+1]-sorted[i]))
+                m = sorted[i+1]-sorted[i];
+        return m;
+    }
 
     ~Span()
-    {
-        delete []arr;
-    }
+    {}
 };

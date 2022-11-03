@@ -1,14 +1,15 @@
+#include<stack>
+
 template<typename T>
 class MutantStack: public std::stack<T>
 {
-
 public:
-
 	MutantStack<T>( void ) { return; }
 	MutantStack<T>( const MutantStack<T> &src ) { *this = src; }
 	~MutantStack<T>( void ) { return; }
 
-	MutantStack<T>	&operator=( const MutantStack<T> &rhs ) {
+	MutantStack<T>	&operator=( const MutantStack<T> &rhs )
+	{
 		(void)rhs;
 		return *this;
 	}
